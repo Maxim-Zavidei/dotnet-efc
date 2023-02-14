@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Application.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
+using (var session = new LeanTrainingDbContext())
+{
+    var all = session.Database.GetAppliedMigrations();
+
+    System.Console.WriteLine("Applied Migrations: " + string.Join(",", all));
+}
